@@ -1,21 +1,35 @@
 ---
-title: "Games"
+title: "Horror Movies"
 author: "Igor"
 date: "2023-08-02"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
 ```{r}
+tx_injuries <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/tx_injuries.csv")
+
+safer_parks <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-09-10/saferparks.csv")
+
 
 ```
 
 ```{r cars}
-summary(cars)
+# Reverse side
+tx_injuries%>%
+  mutate(name = fct_reorder(city, desc(injury_report_rec ))) %>%
+  ggplot( aes(x=city, y=injury_report_rec)) +
+    geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+    coord_flip() +
+    xlab("") +
+    theme(legend.position = "none")
 ```
 
 
