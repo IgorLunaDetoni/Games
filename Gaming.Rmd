@@ -34,5 +34,7 @@ tx_injuries%>%
 
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+plot(tx_injuries)
+
+
 ```
